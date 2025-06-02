@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Obesity Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Obesity Category Prediction</h2>
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label>Gender:</label>
+                <select name="Gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Family History of Overweight:</label>
+                <select name="FamilyHistory">
+                    <option>yes</option>
+                    <option>no</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>FAVC (High Calorie Food):</label>
+                <select name="FAVC">
+                    <option>yes</option>
+                    <option>no</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="number" step="0.1" name="Age" required>
+            </div>
+
+            <div class="form-group">
+                <label>Weight:</label>
+                <input type="number" step="0.1" name="Weight" required>
+            </div>
+
+            <div class="form-group">
+                <label>MTRANS (0-1):</label>
+                <input type="number" step="0.1" name="MTRANS" required>
+            </div>
+
+            <div class="form-group">
+                <label>CAEC (0-1):</label>
+                <input type="number" step="0.1" name="CAEC" required>
+            </div>
+
+            <div class="form-group">
+                <label>CALC (0-1):</label>
+                <input type="number" step="0.1" name="CALC" required>
+            </div>
+
+            <div class="form-group">
+                <label>FCVC (0-3):</label>
+                <input type="number" step="0.1" name="FCVC" required>
+            </div>
+
+            <div class="form-group">
+                <label>CH2O (0-3):</label>
+                <input type="number" step="0.1" name="CH2O" required>
+            </div>
+
+            <div class="form-group">
+                <label>FAF (Exercise Time):</label>
+                <input type="number" step="0.1" name="FAF" required>
+            </div>
+
+            <div class="form-group">
+                <label>TUE (Tech Use Time):</label>
+                <input type="number" step="0.1" name="TUE" required>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+
+
+        {% if prediction %}
+        <div class="result">
+            <p><strong>Predicted Category:</strong> {{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
